@@ -1,0 +1,72 @@
+# === Node / Frontend ===
+client/node_modules/
+client/dist/
+client/.vite/
+client/.turbo/
+client/.env.local
+client/.env
+client/.next/
+client/npm-debug.log*
+client/yarn-debug.log*
+client/yarn-error.log*
+
+# === Gradle / Backend ===
+server/build/
+server/out/
+server/.gradle/
+server/.idea/
+server/.classpath
+server/.project
+server/.settings/
+server/*.iml
+
+# === Gradle / Backend ===
+e2e-tests/node_modules/
+# === Java ===
+**/*.log
+*.class
+*.jar
+*.war
+*.ear
+
+# === IntelliJ IDEA ===
+client/.idea/
+*.iws
+*.iml
+*.ipr
+
+# === VSCode ===
+.vscode/
+
+# === OS-specific ===
+.DS_Store
+Thumbs.db
+
+# === Logs / Coverage / Test Reports ===
+*.log
+logs/
+coverage/
+test-output/
+cobertura.ser
+
+# === Docker ===
+*.pid
+*.env
+docker-compose.override.yml
+**/target/
+**/.dockerignore
+
+# === Misc ===
+.env
+.env.*
+*.swp
+*.bak
+*.tmp
+
+# === Terraform (optional if used) ===
+*.tfstate
+*.tfstate.*
+.crash
+.terraform/
+terraform.tfvars
+*.tfplan

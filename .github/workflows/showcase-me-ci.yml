@@ -1,0 +1,38 @@
+name: Fullstack CI/CD
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install & test frontend
+        run: |
+          cd frontend
+          npm install
+          npm run test -- --coverage
+
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: 21
+
+      - name: Run backend tests
+        run: |
+          cd backend
+          ./gradlew test
+
+      - name: Build Docker images
+        run: |
+          docker build -t backend ./server
+          docker build -t frontend ./client
