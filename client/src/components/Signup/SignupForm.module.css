@@ -1,0 +1,21 @@
+.container {
+    max-width: 400px;
+    margin: 3rem auto;
+    padding: 2rem;
+    border-radius: 12px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.submit {
+    margin-top: 1rem;
+}
+
+.loginLink {
+    cursor: pointer;
+    color: #1976d2;
+}
