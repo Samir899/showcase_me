@@ -1,0 +1,97 @@
+import React, { useState } from 'react';
+import {
+  Box,
+  Button,
+  Checkbox,
+  FormControlLabel,
+  IconButton,
+  InputAdornment,
+  Link,
+  TextField,
+  Typography,
+  Paper,
+} from '@mui/material';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
+import styles from './LoginForm.module.css';
+
+const LoginForm: React.FC = () => {
+  const navigate = useNavigate();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [rememberMe, setRememberMe] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Submit logic here
+    console.log({ username, password, rememberMe });
+  };
+
+  return (
+    <Paper elevation={3} className={styles.container}>
+      <Typography variant="h5" component="h1" gutterBottom>
+        Login
+      </Typography>
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <TextField
+          label="Username"
+          variant="outlined"
+          fullWidth
+          required
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+
+        <TextField
+          label="Password"
+          variant="outlined"
+          fullWidth
+          required
+          type={showPassword ? 'text' : 'password'}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton
+                  onClick={() => setShowPassword((show) => !show)}
+                  edge="end"
+                  aria-label="toggle password visibility"
+                >
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
+        />
+
+        <FormControlLabel
+          control={
+            <Checkbox
+              checked={rememberMe}
+              onChange={(e) => setRememberMe(e.target.checked)}
+              color="primary"
+            />
+          }
+          label="Remember Me"
+        />
+
+        <Button type="submit" variant="contained" fullWidth className={styles.submit}>
+          Login
+        </Button>
+
+        <Box mt={2} textAlign="center">
+          <Typography variant="body2">
+            Don't have an account?{' '}
+            <Link onClick={() => navigate('/signup')} underline="hover" className={styles.signupLink}>
+              Sign up
+            </Link>
+          </Typography>
+        </Box>
+      </form>
+    </Paper>
+  );
+};
+
+export default LoginForm;
