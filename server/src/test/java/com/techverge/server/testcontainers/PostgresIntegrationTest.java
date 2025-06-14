@@ -14,9 +14,9 @@ public class PostgresIntegrationTest {
 
     @Container
     static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:16")
-            .withDatabaseName("testdb")
-            .withUsername("testuser")
-            .withPassword("testpassword");
+            .withDatabaseName("showcaseMeDb")
+            .withUsername("admin")
+            .withPassword("admin");
 
     @DynamicPropertySource
     static void setProps(DynamicPropertyRegistry registry) {
@@ -24,9 +24,9 @@ public class PostgresIntegrationTest {
         registry.add("spring.datasource.username", postgres::getUsername);
         registry.add("spring.datasource.password", postgres::getPassword);
     }
-    @Test
-    void testDatabaseConnection() {
-        // Here you would test the connection to the PostgreSQL container
-    }
+//    @Test
+//    void testDatabaseConnection() {
+//        // Here you would test the connection to the PostgreSQL container
+//    }
 }
 

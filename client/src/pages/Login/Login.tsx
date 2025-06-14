@@ -1,7 +1,18 @@
 import LoginForm from '../../components/LoginForm/LoginForm';
-const Login: React.FC = () => {
+import Logo from "../../components/Logo/Logo";
+import React from "react";
+
+type AlertProps = {
+    setAlert: (alert: { type: 'success' | 'error'; message: string } | null) => void;
+}
+
+const Login: React.FC<AlertProps> = ({setAlert}) => {
   return (
-        <LoginForm />
+      <>
+          <Logo />
+          <LoginForm setAlert={setAlert}/>
+      </>
+
   );
 };
 

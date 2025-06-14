@@ -1,7 +1,7 @@
 type User = {
     userName: string;
-    userId: string;
-    userRole: string;
+    fullName: string;
+    userRole: string[];
     token: string;
 };
 
@@ -9,40 +9,42 @@ export const isUserLoggedIn = () => {
     return getUser() !== null;
 };
 
-export const saveUser = (userId: string, userRole: string, userName: string, token: string) => {
-    localStorage.setItem('userId', userId);
-    localStorage.setItem('userRole', userRole);
+export const saveUser = (userName: string, userRole: string[], fullName: string, token: string) => {
     localStorage.setItem('userName', userName);
+    localStorage.setItem('userRole', JSON.stringify(userRole));
+    localStorage.setItem('fullName', fullName);
     localStorage.setItem('token', token);
 };
 
 export const getUser = (): User | null => {
     const userName = localStorage.getItem('userName');
-    const userId = localStorage.getItem('userId');
-    const userRole = localStorage.getItem('userRole');
+    const fullName = localStorage.getItem('fullName');
+    const userRoleStr = localStorage.getItem('userRole');
     const token = localStorage.getItem('token');
 
-    if (userName && userId && userRole && token) {
-        return {token: token, userName, userId, userRole: userRole.toLowerCase()};
+    if (userName && fullName && userRoleStr && token) {
+        const userRole: string[] = JSON.parse(userRoleStr);
+        return {token: token, userName, fullName, userRole: userRole};
     }
 
     return null;
 };
 
 export const clearUser = () => {
-    localStorage.removeItem('userId');
-    localStorage.removeItem('userRole');
     localStorage.removeItem('userName');
+    localStorage.removeItem('userRole');
+    localStorage.removeItem('fullName');
+    localStorage.removeItem('token');
 };
 
-export const isLoggedInUserAdmin = () => {
-    if(!isUserLoggedIn()) {
-        return false
+export const isLoggedInUserAdmin = (): boolean => {
+    if (!isUserLoggedIn()) {
+        return false;
     }
     const user = getUser();
     const token = localStorage.getItem('token');
-    return user?.userRole.toLowerCase() === 'admin' && !!token;
-}
+    return !!token && Array.isArray(user?.userRole) && user.userRole.some(role => role.toUpperCase() === 'ROLE_ADMIN');
+};
 
 export const getToken: () => string | null = () =>{
     return localStorage.getItem('token');
@@ -52,5 +54,6 @@ export const isLoggedInUserCustomer = () => {
         return false
     }
     const user = getUser();
-    return user?.userRole.toLowerCase() === 'customer';
+    const token = localStorage.getItem('token');
+    return !!token && Array.isArray(user?.userRole) && user.userRole.some(role => role.toUpperCase() === 'ROLE_USER');
 }

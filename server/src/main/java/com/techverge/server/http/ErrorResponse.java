@@ -1,4 +1,6 @@
 package com.techverge.server.http;
 
-public class ErrorResponse {
+import lombok.Builder;
+
+public record ErrorResponse(String error, String message) {
 }

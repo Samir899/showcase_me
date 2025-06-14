@@ -29,3 +29,17 @@
   width: 250px;
   padding: 16px;
 }
+
+.userButton {
+  font-weight: 500;
+  text-transform: none;
+  font-size: 1rem;
+  padding: 6px 12px;
+  border-radius: 8px;
+  color: white;
+  transition: background-color 0.2s ease;
+}
+
+.userButton:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}

@@ -1,4 +1,4 @@
 package com.techverge.server.http;
 
-public class SuccessResponse {
+public record SuccessResponse(String message) {
 }
