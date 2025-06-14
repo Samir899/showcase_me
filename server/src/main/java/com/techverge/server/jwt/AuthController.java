@@ -1,0 +1,4 @@
+package com.techverge.server.jwt;
+
+public class AuthController {
+}
