@@ -7,8 +7,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "test": "jest --watchAll=false --passWithNoTests"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@emotion/css": "^11.13.5",

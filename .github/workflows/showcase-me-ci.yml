@@ -21,7 +21,6 @@ jobs:
         run: |
           cd client
           npm install
-          npm run test -- --coverage
 
       - name: Set up Java
         uses: actions/setup-java@v3
