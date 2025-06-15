@@ -14,7 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
-
+import java.util.UUID;
 class UserServiceTest {
 
     private UserRepository userRepository;
