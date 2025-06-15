@@ -35,7 +35,7 @@ class UserServiceTest {
         // Arrange
         String email = "john@example.com";
         User mockUser = User.builder()
-                .id(1L)
+                .id(new UUID().getMostSignificantBits())
                 .email(email)
                 .firstName("John")
                 .lastName("Doe")
@@ -85,7 +85,7 @@ class UserServiceTest {
         //Arrange
         String email = "john@example.com";
         User mockUser = User.builder()
-                .id(1L)
+                .id(new UUID().getMostSignificantBits())
                 .email(email)
                 .firstName("John")
                 .lastName("Doe")
