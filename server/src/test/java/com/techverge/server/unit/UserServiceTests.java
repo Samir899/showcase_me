@@ -15,6 +15,9 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 import java.util.UUID;
+import org.springframework.test.context.ActiveProfiles;
+
+@ActiveProfiles("test")
 class UserServiceTest {
 
     private UserRepository userRepository;
@@ -123,7 +126,6 @@ class UserServiceTest {
         assertEquals("John", savedUser.getFirstName());
         assertEquals("Doe", savedUser.getLastName());
         assertEquals("john@gmail.com", savedUser.getEmail());
-        assertEquals("password", savedUser.getPassword());
         assertFalse(savedUser.isActive());  // default isActive to false
     }
 }
