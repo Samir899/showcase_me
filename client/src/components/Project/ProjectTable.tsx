@@ -23,6 +23,8 @@ type Project = {
     description: string;
     overview: string;
     url: string;
+    tools: string[];
+    images: string[];
 };
 
 type PaginatedResponse<T> = {

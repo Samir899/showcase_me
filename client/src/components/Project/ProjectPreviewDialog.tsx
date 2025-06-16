@@ -23,12 +23,6 @@ type Props = {
 
 const ProjectPreviewDialog: React.FC<Props> = ({ open, onClose, project }) => {
     if (!project) return null;
-
-    // @ts-ignore
-    // @ts-ignore
-    // @ts-ignore
-    // @ts-ignore
-    // @ts-ignore
     return (
         <Dialog open={open} onClose={onClose} fullWidth maxWidth="md">
             <DialogTitle>{project.title}</DialogTitle>
