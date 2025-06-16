@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {HttpStatus, post} from "../../util/api/Api";
+import {post} from "../../util/api/Api";
 import {API_CONFIG} from "../../api-config";
 import { Alert, Collapse } from '@mui/material';
 import {
@@ -17,6 +17,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { useNavigate } from 'react-router-dom';
 import styles from './SignupForm.module.css';
+import {HttpStatus} from "../../util/api/HttpStatus";
 
 const SignupForm: React.FC = () => {
     const [showPassword, setShowPassword] = useState(false);

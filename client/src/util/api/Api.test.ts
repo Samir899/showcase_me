@@ -1,14 +1,15 @@
-import { get, HttpStatus } from "./Api";
+import { get } from "./Api";
 import { rest } from "msw";
 import { setupServer } from "msw/node";
+import {HttpStatus} from "./HttpStatus";
 
 describe("API Utils", () => {
 
   const server = setupServer(
-    rest.get('/success', (req, res, ctx) => {
+    rest.get('/success', (_req, res, ctx) => {
       return res(ctx.status(200), ctx.json({ message: 'some-response' }))
     }),
-    rest.get('/failure', (req, res, ctx) => {
+    rest.get('/failure', (_req, res, ctx) => {
       return res(ctx.status(404), ctx.json({ message: 'Not found!' }))
     }),
   );

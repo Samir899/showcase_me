@@ -1,4 +1,4 @@
-import React, {JSX, useState} from 'react';
+import React, {type JSX, useState} from 'react';
 import {BrowserRouter as Router, Routes, Route, Navigate} from 'react-router-dom';
 import NavBar from './components/NavBar/NavBar';
 import Login from './pages/Login/Login'

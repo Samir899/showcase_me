@@ -15,8 +15,9 @@ import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import styles from './LoginForm.module.css';
 import { API_CONFIG } from "../../api-config";
-import {HttpStatus, post} from "../../util/api/Api";
+import {post} from "../../util/api/Api";
 import {saveUser} from "../../util/localStorage";
+import {HttpStatus} from "../../util/api/HttpStatus";
 
 type AlertProps = {
     setAlert: (alert: { type: 'success' | 'error'; message: string } | null) => void;

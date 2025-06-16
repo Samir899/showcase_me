@@ -13,9 +13,10 @@ import {
     Typography
 } from '@mui/material';
 import {Delete, Edit} from '@mui/icons-material';
-import {deleteWithJWT, getWithJWT, HttpStatus} from '../../util/api/Api';
+import {deleteWithJWT, getWithJWT} from '../../util/api/Api';
 import {API_CONFIG} from '../../api-config';
 import ProjectPreviewDialog from './ProjectPreviewDialog';
+import {HttpStatus} from "../../util/api/HttpStatus";
 
 type Project = {
     id: number;

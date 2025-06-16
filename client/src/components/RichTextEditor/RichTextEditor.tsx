@@ -3,7 +3,7 @@ import {
     Editor,
     EditorState,
     RichUtils,
-    DraftHandleValue,
+    type DraftHandleValue,
     getDefaultKeyBinding,
     Modifier,
 } from 'draft-js';
@@ -15,13 +15,10 @@ import {
     Paper,
     MenuItem,
     Select,
-    SelectChangeEvent,
-    Divider,
+    type SelectChangeEvent,
     Tooltip,
     Typography,
     FormControl,
-    InputLabel,
-    Input,
     FormHelperText
 } from '@mui/material';
 import {

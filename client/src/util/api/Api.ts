@@ -1,20 +1,12 @@
-import {getToken, saveUser} from "../localStorage";
+import {getToken} from "../localStorage";
+import {HttpStatus} from "./HttpStatus";
 
-export enum HttpStatus {
-  OK = 200,
-  CREATED = 201,
-  BAD_REQUEST = 400,
-  UNAUTHORIZED = 401,
-  FORBIDDEN = 403,
-  NOT_FOUND = 404,
-  INTERNAL_SERVER_ERROR = 500,
-}
-export const get = async <T>(path: string, acceptedResponseCodes : HttpStatus[]): Promise<T> => {
+export const get = async <T>(path: string, acceptedResponseCodes: HttpStatus[]): Promise<T> => {
   const response = await fetch(path);
   const responseData = await response.json();
 
-  if(acceptedResponseCodes.indexOf(response.status) === -1) {
-    throw new Error(responseData.message)
+  if (!acceptedResponseCodes.includes(response.status as HttpStatus)) {
+    throw new Error(responseData.message);
   }
 
   return responseData;
@@ -29,7 +21,7 @@ export const getWithJWT = async <T>(path: string, acceptedResponseCodes : HttpSt
   });
   const responseData = await response.json();
 
-  if(acceptedResponseCodes.indexOf(response.status) === -1) {
+  if(!acceptedResponseCodes.includes(response.status as HttpStatus)) {
     throw new Error(responseData.message)
   }
 
@@ -50,11 +42,11 @@ export const post = async <T>(
 
   try{
     const responseData = await response.json();
-    if (acceptedResponseCodes.indexOf(response.status) === -1) {
-      throw new Error(responseData.message || 'Unexpected response');
+    if(!acceptedResponseCodes.includes(response.status as HttpStatus)) {
+      throw new Error(responseData.message)
     }
     return responseData;
-  }catch(e){
+  }catch{
     throw new Error("Server Unavailable. Please try again later.")
   }
 };
@@ -76,8 +68,8 @@ export const postWithJWT = async <T>(
   console.log("response: " , response)
   const responseData = await response.json();
 
-  if (acceptedResponseCodes.indexOf(response.status) === -1) {
-    throw new Error(responseData.message || 'Unexpected response');
+  if(!acceptedResponseCodes.includes(response.status as HttpStatus)) {
+    throw new Error(responseData.message)
   }
   return responseData;
 };
@@ -99,8 +91,8 @@ export const putWithJWT = async <T>(
 
   const responseData = await response.json();
 
-  if (acceptedResponseCodes.indexOf(response.status) === -1) {
-    throw new Error(responseData.message || 'Unexpected response');
+  if(!acceptedResponseCodes.includes(response.status as HttpStatus)) {
+    throw new Error(responseData.message)
   }
   return responseData;
 };
@@ -142,7 +134,7 @@ export const postFormWithJWT = async <T>(
       throw new Error(responseData.message || 'Unexpected response');
     }
     return responseData;
-  } catch (error) {
+  } catch {
     throw new Error('Server Unavailable. Please try again later.');
   }
 };

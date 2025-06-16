@@ -17,8 +17,9 @@ import {
 } from '@mui/material';
 import { Add, Delete } from '@mui/icons-material';
 import RichTextEditor from "../RichTextEditor/RichTextEditor";
-import { HttpStatus, postFormWithJWT } from "../../util/api/Api";
+import { postFormWithJWT } from "../../util/api/Api";
 import { API_CONFIG } from "../../api-config";
+import {HttpStatus} from "../../util/api/HttpStatus";
 
 type ProjectDialogProps = {
     open: boolean;
