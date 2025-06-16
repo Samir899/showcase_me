@@ -1,4 +1,9 @@
 {
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ],
   "compilerOptions": {
     "target": "ES2015",
     "lib": [
@@ -6,11 +11,6 @@
       "dom.iterable",
       "esnext",
       "ES2015"
-    ],
-    "files": [],
-    "references": [
-      { "path": "./tsconfig.app.json" },
-      { "path": "./tsconfig.node.json" }
     ],
     "allowJs": true,
     "skipLibCheck": true,
