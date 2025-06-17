@@ -48,9 +48,10 @@ const SignupForm: React.FC = () => {
         onSubmit: async (values) => {
             try {
                 const response = await post(API_CONFIG.auth.signup, values, [HttpStatus.CREATED]);
+                console.log(response);
                 setAlert({ type: 'success', message: 'Signup successful! Redirecting to login...' });
                 setTimeout(() => navigate('/login'), 2000); // optional: redirect on success
-            } catch (e) {
+            } catch {
                 // optionally show an error message to user here
                 setAlert({ type: 'error', message: 'Signup failed. Please try again.' });
             }
